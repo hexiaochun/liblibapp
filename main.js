@@ -4,6 +4,18 @@ const fs = require('fs');
 const path = require('path');
 const userDataPath = app.getPath('userData');
 const configDirectory = path.join(userDataPath, 'liblibapp');
+const express = require('express');
+const expressApp = express();
+const port = 3410;
+
+// 使用 express.json() 中间件来解析请求体中的 JSON 数据
+expressApp.use(express.json());
+
+// 引入我们的接口
+require('./src/api.js')(expressApp);
+
+// 服务器开始监听
+expressApp.listen(port, () => console.log(`Server is running on port ${port}`));
 
 
 const setupIpcHandlers = require('./src/ipcHandlers');
