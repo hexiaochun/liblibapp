@@ -1,0 +1,265 @@
+.table-container-1 {
+  min-width: 2000px;
+  margin-top: 10px;
+  padding-right: 30px;
+  /* overflow: auto; */
+}
+
+.container {}
+
+th {
+  text-align: center;
+}
+
+td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.translate {
+  width: 350px;
+  /* display: flex;
+  align-items: center;
+  justify-content: space-between; */
+
+}
+
+.translate-left {
+  /* width: 200px; */
+}
+
+.translate-right {
+  /* width: 200px; */
+}
+
+.translate-model {
+  /* flex: 1; */
+  /* width: 85px; */
+  margin: 10px 0;
+}
+
+.translate-img {
+  margin: 0 10px;
+  width: 50px;
+  height: 30px;
+}
+
+.negative-prompt {
+  /* width: 200px; */
+}
+
+.status {
+  width: 50px;
+}
+
+.button-cosole {
+  width: 90px;
+}
+
+.config {
+  width: 200px;
+}
+
+.config-time-from {
+  display: flex;
+  align-items: center;
+  width: 200px;
+}
+
+.config-time-range {
+  flex: 1;
+}
+
+.config-time-num {
+  width: 30px;
+}
+
+.audition {
+  width: 280px;
+
+}
+
+.audition-content {
+  display: flex !important;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.audition-title {
+  width: 160px;
+  text-align: end;
+  margin-right: 10px;
+}
+
+.console-left-refresh {
+  margin-left: 10px;
+}
+
+.chToEn {
+  display: inline-block
+}
+
+/* .role{
+  width: 150px;
+}
+.storyboard{
+width: 220px;
+}
+.prompt-text{
+  width: 220px;
+}
+.image{
+  width: 150px;
+} */
+.audition_2 {
+  margin-top: 10px;
+}
+
+.audition-button {
+  margin-top: 10px;
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+.audition-img {
+  width: 20px;
+  height: 20px;
+}
+
+.role-content {
+  text-align: left;
+}
+
+.audition-content {
+  margin-top: 10px;
+  line-height: 1;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.audition-content-button {
+  line-height: 1;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.audition-img {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.audition-text {
+  vertical-align: middle;
+}
+
+.console-left-bottom {
+  margin-top: 10px;
+}
+
+.config-action {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.action {
+  display: flex;
+  padding: 1px solid red;
+  align-items: center;
+}
+
+.action-button {
+  margin-left: 10px;
+}
+
+.image-url {
+  width: 250px;
+}
+
+.image-list {
+  margin-bottom: 20px;
+  text-align: left;
+  width: 300px;
+  word-wrap: break-word;
+}
+
+.image-info {
+  margin-top: 10px;
+  display: inline-block;
+  width: 80px;
+  margin-left: 10px;
+}
+
+.image-info-url {
+  width: 100%;
+}
+
+.selected-image {
+  border: 2px solid #41eb17;
+}
+
+.tips {
+  font-size: 12px;
+  margin-bottom: 10px;
+  color: red;
+}
+
+.prompt-list {
+  width: 350px;
+  color: aliceblue;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-wrap: break-word;
+  max-height: 250px;
+  overflow: auto;
+}
+
+.prompt-info {
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-right: 5px;
+  background-color: #0d6efd;
+  display: flex;
+  font-size: 14px;
+  align-items: center;
+
+}
+
+.prompt-info-close {
+  margin-left: 5px;
+  width: 14px;
+  height: 14px;
+}
+
+.change-text {
+  margin-top: 10px;
+}
+
+.add-prompt {
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.prompt-input {
+  width: 230px;
+}
+
+.prompt-button {
+  width: 100px;
+  margin-left: 10px
+}
+
+.copy-prompt {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  margin: 5px 0;
+}
+.copy-prompt-img{
+  width: 40px;
+  height: 40px;
+}
