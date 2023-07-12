@@ -1,5 +1,5 @@
 
-
+const Config = require('./config');
 const Image = require('./image');
 const knex = require('knex');
 const moment = require('moment');
@@ -14,7 +14,7 @@ class Database {
             useNullAsDefault: true
         });
 
-        
+        this.Config = new Config(this.knex);
         this.Image = new Image(this.knex);
         
     }
@@ -104,6 +104,16 @@ class Database {
                 }
             }),
 
+            this.knex.schema.hasTable('config').then((exists) => {
+                if (!exists) {
+                    return this.knex.schema.createTable('config', (table)  => {
+                        table.increments('id').primary();
+                        table.string('name');
+                        table.string('value');
+                        table.timestamp('inserted_at').defaultTo(moment().format('YYYY-MM-DD HH:mm:ss'));
+                    });
+                }
+            }),
           
             
             

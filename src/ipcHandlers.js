@@ -53,8 +53,9 @@ module.exports = function(db, mainWindow) {
     ipcMain.handle('get-csv-data', async (event, path) => {
         const csvData = fs.readFileSync(path, 'utf8');
         const results = Papa.parse(csvData, {
-          quoteChar: '"',
-          header: true
+            delimiter: ",",
+            header: false,
+            dynamicTyping: true,
         });
       
         return results.data;
