@@ -16,6 +16,13 @@
 https://snvazev2ds.feishu.cn/docx/MlKrdrjJfoRey0xun33chtoOnye
 
 
+## mac电脑提示文件损坏的处理方式
+
+sudo xattr -d com.apple.quarantine /Applications/libbliapp.app
+
+## 软件下载地址
+https://github.com/hexiaochun/liblibapp/releases/tag/v1.0.0
+
 ## 代码编译
 
 npm install 
