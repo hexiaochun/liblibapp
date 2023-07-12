@@ -90,7 +90,7 @@ module.exports = function(db, mainWindow) {
     });
 
     ipcMain.handle('export-prompt', async(event, imageData,open_path) => {
-        const prompts = imageData.map(data => `"${data.id}","${data.text_content}","${data.prompt}","${data.negative_prompt}","${data.image_width}","${data.image_height}","${data.sampler_name}","${data.steps}","${data.cfg_scale}","${data.image_url}"`).join(',\n');
+        const prompts = imageData.map(data => `"${data.book_id}","${data.text_content}","${data.prompt}","${data.negative_prompt}","${data.image_width}","${data.image_height}","${data.sampler_name}","${data.steps}","${data.cfg_scale}","${data.image_url}"`).join(',\n');
         console.log('导出',open_path+'/output.csv');  
         // 将字符串写入txt文档
         fs.writeFile(open_path+'/output.csv', prompts, 'utf8', (err) => {
