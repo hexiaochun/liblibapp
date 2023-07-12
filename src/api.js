@@ -1,8 +1,9 @@
-module.exports = function(app) {
+module.exports = function(app, db) {
     // 创建一个返回随机数的 GET /task 接口
-    app.get('/task', (req, res) => {
+    app.get('/task', async(req, res) => {
       // 生成一个 0 到 1 之间的随机数
       const randomNumber = Math.random();
+      await db.Image.getImage(1);
   
       // 将随机数作为 JSON 响应返回
       res.json({ randomNumber });
@@ -18,6 +19,13 @@ module.exports = function(app) {
   
       // 响应处理成功的消息
       res.json({ message: 'Processing Successful' });
+    });
+  
+    // 创建一个从 image 表中查询所有数据的 GET /images 接口
+    app.get('/images', async (req, res) => {
+      const rows = await db.getImages();
+      // 将查询结果作为 JSON 响应返回
+      res.json(rows);
     });
   };
   

@@ -2,6 +2,7 @@ const { ipcMain,app,shell } = require('electron');
 const fs = require('fs');
 const path = require('path');
 const dialog = require('electron').dialog;
+const Papa = require('papaparse');
 
 module.exports = function(db, mainWindow) {
     ipcMain.handle('rebuild_db', () => {
@@ -33,6 +34,32 @@ module.exports = function(db, mainWindow) {
         //这里添加一个打开文件夹的功能electron.shell.openPath
         shell.openPath(db.dbPath);
     })
+
+
+    ipcMain.handle('select-data-file', async (event) => {
+        const result = await dialog.showOpenDialog(mainWindow, {
+            properties: ['openFile'],
+            filters: [
+                { name: 'Files', extensions: ['csv'] }
+            ]
+        });
+    
+        if (!result.canceled && result.filePaths.length > 0) {
+            const originalPath = result.filePaths[0];
+            return originalPath;
+        }
+    });
+
+    ipcMain.handle('get-csv-data', async (event, path) => {
+        const csvData = fs.readFileSync(path, 'utf8');
+        const results = Papa.parse(csvData, {
+          quoteChar: '"',
+          header: true
+        });
+      
+        return results.data;
+      });
+
 
     ipcMain.handle('select-image-file', async (event) => {
         const result = await dialog.showOpenDialog(mainWindow, {

@@ -29,6 +29,7 @@
     "macaddress": "^0.5.3",
     "microsoft-cognitiveservices-speech-sdk": "^1.29.0",
     "moment": "^2.29.4",
+    "papaparse": "^5.4.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",
     "react-bootstrap-icons": "^1.10.3",
