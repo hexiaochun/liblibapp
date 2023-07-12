@@ -71,6 +71,14 @@ function WebApp () {
 
   }
 
+  const exportPrompt = async () => {
+    ipcRenderer.invoke('database', 'Config.get_image_path').then(async (res) => {
+      await ipcRenderer.invoke('export-prompt', csvData,res);
+      alert('导出成功')
+    });
+  }
+
+
   const openFolder = () => {
 
     ipcRenderer.invoke('database', 'Config.get_image_path').then(async (res) => {
@@ -118,6 +126,7 @@ function WebApp () {
           <Button onClick={beiginTask}>开始下发</Button>
           <Button variant="secondary" onClick={endTask}>暂停下发</Button>
           <Button variant="danger" onClick={clearData}>清空内容</Button>
+          <Button variant="success" onClick={exportPrompt}>导出数据</Button>
         </ButtonGroup>
         </Col>
         <Col xl='4'>
