@@ -3,10 +3,10 @@ module.exports = function(app, db) {
     app.get('/task', async(req, res) => {
       // 生成一个 0 到 1 之间的随机数
       const randomNumber = Math.random();
-      await db.Image.getImage(1);
+      let info =  await db.Image.getTask();
   
       // 将随机数作为 JSON 响应返回
-      res.json({ randomNumber });
+      res.json({ code:0,info:info });
     });
   
     // 创建一个处理 JSON 内容并返回处理成功信息的 POST /submit 接口
