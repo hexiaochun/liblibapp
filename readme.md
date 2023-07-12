@@ -1,49 +1,21 @@
-## 安装
-npm install electron --save-dev
-npm install --save react react-dom
-npm install --save-dev nodemon
-npm install react-bootstrap
-npm install electron-store
+
+## 1、在浏览器导入浏览器插件
+
+## 2、打开liblibai.com的画图地址
+
+## 3、启动本地软件
+
+## 4、导入批量任务，开始下发
+
+## 5、自动下发作图
+
+## 图文教程
+
+https://snvazev2ds.feishu.cn/docx/MlKrdrjJfoRey0xun33chtoOnye
 
 
-npm install --save-dev @babel/core @babel/preset-env @babel/preset-react babel-loader webpack webpack-cli html-webpack-plugin
+## 代码编译
 
-npm install --save-dev css-loader style-loader
+npm install 
 
-#增加数据库
-npm install sqlite3 --save
-npm install knex --save
-
-## 添加langchain
-npm install -S langchain
-
-## 添加路径选择
-npm install @electron/remote
-npm install path-browserify
-
-
-## 打包
-npm install electron-packager --save-dev
-
-npm install electron-builder --save-dev
-
-## mac 打包
-npx electron-builder
-
-## win打包
-npx electron-builder --windows
-
-##  运行
-
-npm install
-
-npm run build
-
-npm run start
-
-## 开发
 npm run watch
-
-
-## 包损坏执行命令
-sudo xattr -d com.apple.quarantine /Applications/text2video.app
