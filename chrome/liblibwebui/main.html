@@ -1,0 +1,45 @@
+<html>
+
+<head>
+  <title>抖音</title>
+  <meta charset="utf-8" />
+
+  <style type="text/css">
+    body {
+      margin: 10px;
+      min-width: 300px;
+      ;
+    }
+
+    video {
+      display: block;
+      width: 200px;
+    }
+
+    #video-list {
+      width: 300px;
+      word-wrap: break-word;
+    }
+  </style>
+</head>
+
+<body>
+  <script type="text/javascript" src="js/base/jquery.min.js"></script>
+  <script type="text/javascript" src="js/base/axios.min.js"></script>
+  <script type="text/javascript" src="js/base/utils.js"></script>
+  <script type="text/javascript" src="js/base/md5.js"></script>
+  <script type="text/javascript" src="js/popup.js"></script>
+  <script type="text/javascript" src="js/background.js"></script>
+  <div id="app">
+    <div class="tab">
+      <button id="uplode" class="button">上传所选</button>  
+    </div>
+    <div id="videos-container" class="video-div">
+      <ul id="video-list">
+      </ul>
+    </div>
+  </div>
+
+</body>
+
+</html>
