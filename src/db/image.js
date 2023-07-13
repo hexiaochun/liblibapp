@@ -23,14 +23,31 @@ class Image {
   }
   
   getTask () {
-    return this.knex.select('*').from('image').where('status', '=', '0').limit(2)
+    return this.knex.select('*').from('image').where('status', '=', '0').limit(1)
       .then((result) => {
         if (result.length === 0) {
-          return this.knex.select('*').from('image').where('status', '=', '1').limit(2);
+          return this.knex.select('*').from('image').where('status', '=', '1').limit(1);
         }
-        return result;
+        else {
+          // 在此处，我们需要更新检索到的数据的状态
+          // 假设我们的数据包含一个唯一标识符，例如'id'
+          // 您需要根据您的数据结构进行更改
+          const idToUpdate = result[0].id;
+
+          return this.knex('image')
+            .where('id', '=', idToUpdate)
+            .update({
+              'status': '1'
+            })
+            .then(() => {
+              // 这里我们返回已更新的数据
+              // 您可能希望在此处包含更多的字段，取决于您需要的信息
+              return this.knex.select('*').from('image').where('id', '=', idToUpdate).limit(1);
+            });
+        }
       });
   }
+
 
   getImage (id) {
     return this.knex.select('*').from('image').where('id', '=', id);
