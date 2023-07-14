@@ -3,15 +3,19 @@ let timer;
 let current_info = null;
 
 async function getTaskInfoAndSendMessage() {
+  clearTimeout(timer);
   try {
+    sendMessageWithTime("开始检测任务");
     const response = await fetch('http://127.0.0.1:3410/task');
     const data = await response.json();
     
     if (data.info.length == 0) {
       console.log('Task info is missing. Retrying in 1 minute...');
-      timer = setTimeout(getTaskInfoAndSendMessage, 1000 * 60); // retry after 1 minute
+      sendMessageWithTime("没有任务等待30秒");
+      timer = setTimeout(getTaskInfoAndSendMessage, 1000 * 30); // retry after 1 minute
       return;
     }
+    sendMessageWithTime("获取到任务，开始执行ID："+data.info[0].id);
     current_info = data.info[0];
     sendMessageToActiveTab('draw_img', current_info);
     console.log('Message sent: ', current_info);
@@ -19,11 +23,27 @@ async function getTaskInfoAndSendMessage() {
     // 设置一个状态等待绘画完成的监控
     paintingFinished = false;
     timer = setTimeout(checkPaintingStatus, 1000 * 60 * 4); // 4 minutes
+    return;
   } catch (error) {
+    sendMessageWithTime("获取出错，30秒后重试");
     console.error('Failed to get task info: ', error);
   }
-  timer = setTimeout(getTaskInfoAndSendMessage, 1000 * 60); // retry after 1 minute
+  timer = setTimeout(getTaskInfoAndSendMessage, 1000 * 30); // retry after 1 minute
 }
+
+function sendMessageWithTime( messageContent) {
+  let messageType = "task_status"
+  var date = new Date();
+  var currentTime = date.toLocaleTimeString();
+  var fullMessage = currentTime + ": " + messageContent;
+
+  // 使用浏览器提供的接口发送消息到当前活动的标签页
+  // 这里假设 `sendMessageToActiveTab` 是浏览器提供的函数用于发送消息
+  // 具体的调用方式可能会因浏览器或者环境的不同而有所不同
+  sendMessageToActiveTab(messageType, fullMessage);
+}
+
+
 
 
 function sendMessageToActiveTab(cmd, message) {
@@ -87,4 +107,4 @@ async function postData(url = '', data = {}) {
 
 
 // 请求任务信息并发送消息
-timer = setTimeout(getTaskInfoAndSendMessage, 1000 * 60); // retry after 1 minute
+timer = setTimeout(getTaskInfoAndSendMessage, 1000 * 30); // retry after 1 minute

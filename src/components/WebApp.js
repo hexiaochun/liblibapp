@@ -104,6 +104,7 @@ function WebApp () {
   const fields = [
     { id: 'id', name: '编号' },
     { id: 'image_url', name: '图片' },
+    { id: 'status', name: '状态' },
     { id: 'cfg_scale', name: '相关性' },
     { id: 'steps', name: '迭代' },
     { id: 'image_height', name: '高度' },
@@ -148,7 +149,18 @@ function WebApp () {
                 <td key={index}>
                   {field.id === 'image_url' && row[field.id]
                     ? <img src={`file://${row[field.id]}?${new Date().getTime()}`} alt="" style={{ width: '200px', height: '100%' }} />
-                    : row[field.id]}
+                    : field.id === 'status'
+                      ? row[field.id] === "-1"
+                        ? '未提交'
+                        : row[field.id] === "0"
+                          ? '等待'
+                          : row[field.id] === "1"
+                            ? '下发'
+                            : row[field.id] === "2"
+                              ? '完成'
+                              : ''
+                      : row[field.id]
+                  }
                 </td>
               ))}
             </tr>
