@@ -65,7 +65,7 @@ https://snvazev2ds.feishu.cn/docx/MlKrdrjJfoRey0xun33chtoOnye
 
 ## 视频教程
 
-[点击这里观看B站视频](https://player.bilibili.com/player.html?aid=445806558&bvid=BV1aj411Z7Pc&cid=1194640722&page=1)
+[点击这里观看B站视频](https://www.bilibili.com/video/BV1aj411Z7Pc/)
 
 ## mac电脑提示文件损坏的处理方式
 
