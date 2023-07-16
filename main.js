@@ -8,6 +8,7 @@ const express = require('express');
 const expressApp = express();
 const port = 3410;
 
+const { interceptRequests } = require('./src/netIntercept.js')
 
 const setupIpcHandlers = require('./src/ipcHandlers');
 
@@ -66,7 +67,41 @@ function createWindow () {
 }
 
 
-app.whenReady().then(createWindow)
+app.whenReady().then(() => {
+  createWindow()
+  // 创建一个新的窗口用于打开www.liblibai.com
+  // createLibWindow()
+})
+
+function createLibWindow(url) {
+  // 创建新的窗口用于打开www.liblibai.com
+  const libWindow = new BrowserWindow({
+    width: 1366,
+    height: 768,
+    webPreferences: {
+      defaultEncoding: 'UTF-8',
+      nodeIntegration: true,
+      contextIsolation: false,
+    }
+  })
+
+  // 加载 www.liblibai.com 网站
+  libWindow.loadURL(url)
+  // 添加网络拦截代码，并传入 libWindow 实例
+  interceptRequests(libWindow, db);
+  // 当网页加载完成时执行 JavaScript 代码
+  ipcMain.on('intercept-navigation', (event, url) => {
+    // 在主进程中拦截到导航请求，重新加载 URL
+    libWindow.loadURL(url);
+  });
+
+}
+
+
+// 每次需要打开新窗口时，调用 createLibWindow()
+ipcMain.on('open-new-window', (event, url) => {
+  createLibWindow(url)
+})
 
 
 app.on('window-all-closed', () => {

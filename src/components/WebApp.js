@@ -78,6 +78,13 @@ function WebApp () {
     });
   }
 
+  const openLiblib = async() =>{
+    ipcRenderer.send('open-new-window', 'https://www.liblibai.com/')
+  }
+
+  const openLiblibDraw = async() =>{
+    ipcRenderer.send('open-new-window', 'https://www.liblibai.com/sd')
+  }
 
   const openFolder = () => {
 
@@ -120,6 +127,8 @@ function WebApp () {
       <Row>
         <Col xl='8'>
         <ButtonGroup>
+        <Button variant='secondary' onClick={openLiblib}>登录liblibAI</Button>
+        <Button  onClick={openLiblibDraw}>绘画liblibAI</Button>
           <Button variant='success'  onClick={getDataFile}>导入文件数据</Button>
           <Button onClick={saveImagePath}>设置图片路径</Button>
           <Button variant='success' onClick={openFolder}>打开图片路径</Button>
