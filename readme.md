@@ -2,6 +2,8 @@
 ## 1、在浏览器导入浏览器插件
 
 ## 2、打开liblibai.com的画图地址
+![Image description](./使用说明.png)
+
 ![Image description](./liblib.png)
 
 ![Image description](./img_status.png)
