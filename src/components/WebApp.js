@@ -89,6 +89,12 @@ function WebApp () {
     ipcRenderer.send('open-new-window', 'https://www.liblibai.com/sd')
   }
 
+  const setDraw = async(id) =>{
+      console.log(id);
+      await ipcRenderer.invoke('database', 'Image.updateImage',id,{status : 0 });
+      getAllImage();
+  }
+
   const openFolder = () => {
 
     ipcRenderer.invoke('database', 'Config.get_image_path').then(async (res) => {
@@ -149,6 +155,7 @@ function WebApp () {
       <Table striped bordered hover>
         <thead>
           <tr>
+          <th >操作</th>
             {fields.map((field, index) => (
               <th key={index}>{field.name}</th>
             ))}
@@ -157,6 +164,9 @@ function WebApp () {
         <tbody>
           {csvData.map((row, rowIndex) => (
             <tr key={rowIndex}>
+              <td>
+                <Button onClick={()=>{ setDraw(row.id)}}>绘画</Button>
+              </td>
               {fields.map((field, index) => (
                 <td key={index}>
                   {field.id === 'image_url' && row[field.id]

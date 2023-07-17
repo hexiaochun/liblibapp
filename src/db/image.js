@@ -54,7 +54,7 @@ class Image {
   }
 
   beginTask() {
-    return this.knex('image').update({ status: 0 });
+    return this.knex('image').where('status',[-1]).update({ status: 0 });
   }
   
   endTask() {

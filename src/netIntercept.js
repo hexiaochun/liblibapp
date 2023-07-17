@@ -57,21 +57,24 @@ async function handleImage(details, window, db) {
     let image_url = details.url;
     let headers = details.requestHeaders;
     let save_path = await db.Config.get_image_path()
+    let info  = global.current_info;
     // 使用 node-fetch 下载图片
     fetch(image_url, { headers })
         .then(res => {
-
-            let image_path = path.join(save_path, `${global.current_info.id}`+'_'+Math.floor(Date.now() / 1000)+'.png');
+            let image_path = path.join(save_path, `${info.id}`+'_'+Math.floor(Date.now() / 1000)+'.png');
             const dest = fs.createWriteStream(image_path);
             res.body.pipe(dest);
             dest.on('finish', async () => {
-                console.log('Image downloaded and saved!',global.current_info.id);
-                await db.Image.updateImage(global.current_info.id, { image_url: image_path, status: 2 });
+                console.log('Image downloaded and saved!',info.id);
+                await db.Image.updateImage(info.id, { image_url: image_path, status: 2 });
+
+                BrowserWindow.getAllWindows().forEach(win => {
+                    win.webContents.send('database-updated');
+                  });
+
             });
 
-            BrowserWindow.getAllWindows().forEach(win => {
-                win.webContents.send('database-updated');
-              });
+            
 
         })
         .catch(err => console.error(err));

@@ -76,8 +76,8 @@ app.whenReady().then(() => {
 function createLibWindow(url) {
   // 创建新的窗口用于打开www.liblibai.com
   const libWindow = new BrowserWindow({
-    width: 1366,
-    height: 768,
+    width: 1280,
+    height: 720,
     webPreferences: {
       defaultEncoding: 'UTF-8',
       nodeIntegration: true,
