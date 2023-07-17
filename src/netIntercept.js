@@ -69,14 +69,16 @@ async function handleImage(details, window, db) {
                 await db.Image.updateImage(global.current_info.id, { image_url: image_path, status: 2 });
             });
 
+            BrowserWindow.getAllWindows().forEach(win => {
+                win.webContents.send('database-updated');
+              });
+
         })
         .catch(err => console.error(err));
 
     global.intervalId = setInterval(() => handleTask(window, db), 3000); // 30000 毫秒等于 30 秒
 
-    BrowserWindow.getAllWindows().forEach(win => {
-        win.webContents.send('database-updated');
-      });
+    
 }
 
 

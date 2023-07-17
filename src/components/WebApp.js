@@ -22,6 +22,9 @@ function WebApp () {
 
   }, []);
 
+  const openText = async() =>{
+    await ipcRenderer.invoke('open-url','https://snvazev2ds.feishu.cn/docx/MlKrdrjJfoRey0xun33chtoOnye');
+  }
   const getDataFile = async () => { // 获取csv数据文件
 
     const path = await ipcRenderer.invoke('select-data-file');
@@ -125,22 +128,22 @@ function WebApp () {
   return (
     <div>
       <Row>
-        <Col xl='8'>
+        <Col xl='10'>
         <ButtonGroup>
-        <Button variant='secondary' onClick={openLiblib}>登录liblibAI</Button>
-        <Button  onClick={openLiblibDraw}>绘画liblibAI</Button>
+          <Button variant='success' onClick={openText}>使用教程</Button>
+          <Button variant='secondary' onClick={openLiblib}>先登录liblibAI</Button>
           <Button variant='success'  onClick={getDataFile}>导入文件数据</Button>
           <Button onClick={saveImagePath}>设置图片路径</Button>
           <Button variant='success' onClick={openFolder}>打开图片路径</Button>
-          
           <Button onClick={beiginTask}>开始下发</Button>
+          <Button variant='success'  onClick={openLiblibDraw}>打开绘画liblibAI</Button>
           <Button variant="secondary" onClick={endTask}>暂停下发</Button>
           <Button variant="danger" onClick={clearData}>清空内容</Button>
           <Button variant="success" onClick={exportPrompt}>导出数据</Button>
         </ButtonGroup>
         </Col>
-        <Col xl='4'>
-          <Row>插件最近更新时间：{update_task_time}</Row>
+        <Col xl='2'>
+          <Row>插件最近更新时间： {update_task_time}</Row>
         </Col>
       </Row>
       <Table striped bordered hover>
